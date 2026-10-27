@@ -2,9 +2,9 @@
 
 ## Descripción
 
-En este proyecto realizamos un paso a paso del desarrollo de un pipeline, para analizar , limpiar y guardar en sql los datos de la estación de A Coruña/ Alvedro(aeroporto, indicativo 08002), entre el 1 de enero de 2021 y el 31 de diciembre de 2025 con unas coordenadas aproximdas de  43,3069° N, −8,3725° O.
+En este proyecto realizamos un paso a paso del desarrollo de un pipeline, para analizar , limpiar y guardar en sql los datos de la estación de A Coruña/ Alvedro(aeroporto, indicativo 08002), entre el 1 de enero de 2021 y el 31 de diciembre de 2025 con las siguientes coordenadas Latitud: 43,3000 , Longitud: -8,3833 y Altitud de 97 m .
 
-Para ello utilizaremos como fuente los datos captados de Meteosat , los cuales descargaremos desde :
+Para ello utilizaremos como fuente los datos captados de Meteosat(meteostat.net) , los cuales descargaremos desde :
 
 URL de descarga: https://raw.githubusercontent.com/bigdatawirtz/datasets/main/datasets/meteo_alvedro_2021_2025.csv
 
@@ -88,9 +88,9 @@ Tras esto procederemos a limpiar y guardar los datos descargados por csv, ejecut
 | Duplicados | Imprimiendo la cantidad de duplicados de cada una de las columnas             | Quitando duplicados sin tener índices creados en el dataframe para también eliminar las fechas duplicadas                |
 | Nulos | Mostrando mediante  isna().sum() la suma de datos nulos de cada columnas             | Realizando una interpolación para los datos predecibles y no editando los datos que no podemos calcular mediante una media               |
 | Valores fuera de rango | Al revisar el dataframe para verificar que todas las temperatúras seguían un rango normativo debido a la zona             | Limpiar estos datos sustituyendolos por nulos                |
-| Inconsistencias | Comprobando que máxima es menor que la mínima             | 1.2                |
-| Fechas faltantes | 10.8             | 1.2                |
-| Valores que no encajan | 10.8             | 1.2                |
+| Inconsistencias | Comprobando que máxima es menor que la mínima             | Cambiar a nulos e interpolar                |
+| Fechas faltantes | Comparar la diferencia entre las fechas actuales del dataframe y la lista generada a mano como un rango entre el mínimo y el máximo de las fechas             | Generar una lista con fechas faltantes , añadir las columnas restantes con valores nulos e interpolar los valores nulos              |
+| Valores que no encajan | Mirando el eje y de la gráfica sin limpiar             | Sustituir por nulos e interpolar                |
 
 
 
@@ -105,4 +105,6 @@ En este proyecto se has utilizado IA (chatgpt o copilot) para varios aspectos co
 3. Proporcionar documentación para poder revisar ejemplos o documentos donde se utilizen ciertos bloques de código con una lógica parecida a ciertos apartados del notebook.
 
 4. Generar código de ejemplo para poder aplicarlo a la hora de tratar la limpieza de datos inconsistentes, fuera de rango o fechas faltantes.
+
+5. Razonar la causa de que interpolemos algunas columnas o no según su tendencia a cambiar bruscamente o no con el paso de los días. 
 
