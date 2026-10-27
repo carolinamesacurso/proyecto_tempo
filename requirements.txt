@@ -27,6 +27,7 @@ pillow==13.0.0
 platformdirs==4.13.5
 prompt_toolkit==3.0.53
 psutil==7.2.2
+psycopg2-binary==2.9.13
 ptyprocess==0.7.0
 pure_eval==0.2.4
 Pygments==2.21.0
@@ -35,6 +36,7 @@ python-dateutil==3.0.0
 pyzmq==27.2.0
 requests==2.34.2
 six==1.17.0
+SQLAlchemy==2.1.6
 stack-data==0.6.3
 tornado==6.6
 traitlets==5.16.1
