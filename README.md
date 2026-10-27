@@ -12,22 +12,82 @@ URL para previsualizar contenido: https://github.com/bigdatawirtz/datasets/blob/
 
 
 ## Pasos para ejecutar el proyecto
-### 1\. Clonar el proyecto (ubuntu)
+***Estructura del proyecto***
 
-Crea una estructura de carpetas para poder clonar el repositorio dentro de esta con los siguientes comandos:
+```bash
+├── README.md
+├── requirements.txt
+├── .gitignore
+├── datos/
+│   ├── raw/
+│   └── clean/
+├── notebooks/
+└── output/
+```
 
+### 1. Clonar el proyecto (ubuntu)
+
+Crea una estructura de carpetas para poder clonar el repositorio dentro con los siguientes comandos:
+
+```powershell
 mkdir carpetaEjemplo
 cd carpetaEjemplo
-
+```
 
 ### 2. Crea el enviroment y actívalo
-
-&nbsp;python3 \-m venv .venv
-
-&nbsp;source .venv/bin/activate
-
-### 3\. Clona el repositorio
+```powershell
+python3 \-m venv .venv
+source .venv/bin/activate
+```
+### 3. Clona el repositorio
 
 ```powershell
 git clone https://github.com/carolinamesacurso/proyecto_Albergues
 ```
+
+### 4. Configura variables e instalar libtrerías
+Para este proceso deberás de abrir el proyecto con visual studio con el siguiente comando
+
+```powershell
+code .
+```
+
+El proyecto te proporcionará un '.env.example' el cual tendrás que copiar para crear el fichero '.env' donde realizaremos los siguientes pasos.
+
+Modifica estas variables en '.env' para configurar el usuario , contraseña y base de datos a utilizar
+
+```
+POSTGRES_USER=***
+POSTGRES_PASSWORD=***
+POSTGRES_DB=***
+```
+
+Para instalar las dependencias necesarias ejecuta este comando dentro del enviroment
+
+```powershell
+pip install -r requirements.txt
+```
+
+### 5. Levantar proyecto
+Para levantar los servicios necesarios antes necesesitaremos limpiar y guardar los datos descargados por csv, para ello ejecutaremos todas las celdas del archivo notebooks/guardado_limpieza.ipynb hasta la sección donde cargamos PostgreSql .
+
+Necesitaremos ejecutar el siguiente comando con la app docker desktop incializada y configurada.
+
+```powershell
+docker compose up
+```
+
+Al comprobar que los contenedores están activos mediante la app ,podremos ejecutar las secciones posteriores del notebook creando así la tabla "tiempo_limpio".
+
+
+### 6. Decisiones de limpieza
+
+| Problema      | Captado  | Solución |
+|------------|------------------|--------------------|
+| Formato erroneo de varias columnas | 12.5             | 0.0                |
+| Duplicados | 14.2             | 3.5                |
+| Nulos | 10.8             | 1.2                |
+| Valores fuera de rango | 10.8             | 1.2                |
+| Inconsistencias | 10.8             | 1.2                |
+| Fechas faltantes | 10.8             | 1.2                |
+| Valores que no encajan | 10.8             | 1.2                |
