@@ -68,26 +68,41 @@ Para instalar las dependencias necesarias ejecuta este comando dentro del enviro
 pip install -r requirements.txt
 ```
 
-### 5. Levantar proyecto
-Para levantar los servicios necesarios antes necesesitaremos limpiar y guardar los datos descargados por csv, para ello ejecutaremos todas las celdas del archivo notebooks/guardado_limpieza.ipynb hasta la sección donde cargamos PostgreSql .
+### 5. Ejecutar notebook y levantar proyecto
 
-Necesitaremos ejecutar el siguiente comando con la app docker desktop incializada y configurada.
+A la hora de levantar los servicios ejecutaremos el siguiente comando con la app docker desktop incializada y configurada.
 
 ```powershell
 docker compose up
 ```
 
-Al comprobar que los contenedores están activos mediante la app ,podremos ejecutar las secciones posteriores del notebook creando así la tabla "tiempo_limpio".
+Tras esto procederemos a limpiar y guardar los datos descargados por csv, ejecutando todas las celdas del archivo notebooks/guardado_limpieza.ipynb.
+
 
 
 ### 6. Decisiones de limpieza
 
 | Problema      | Captado  | Solución |
 |------------|------------------|--------------------|
-| Formato erroneo de varias columnas | 12.5             | 0.0                |
-| Duplicados | 14.2             | 3.5                |
-| Nulos | 10.8             | 1.2                |
-| Valores fuera de rango | 10.8             | 1.2                |
-| Inconsistencias | 10.8             | 1.2                |
+| Formato erroneo de varias columnas | Sacando la información del tipo de datos del dataframe             | Convertir cada una de las columnas a su formato indicado                |
+| Duplicados | Imprimiendo la cantidad de duplicados de cada una de las columnas             | Quitando duplicados sin tener índices creados en el dataframe para también eliminar las fechas duplicadas                |
+| Nulos | Mostrando mediante  isna().sum() la suma de datos nulos de cada columnas             | Realizando una interpolación para los datos predecibles y no editando los datos que no podemos calcular mediante una media               |
+| Valores fuera de rango | Al revisar el dataframe para verificar que todas las temperatúras seguían un rango normativo debido a la zona             | Limpiar estos datos sustituyendolos por nulos                |
+| Inconsistencias | Comprobando que máxima es menor que la mínima             | 1.2                |
 | Fechas faltantes | 10.8             | 1.2                |
 | Valores que no encajan | 10.8             | 1.2                |
+
+
+
+### 7. Uso de IA
+
+En este proyecto se has utilizado IA (chatgpt o copilot) para varios aspectos como:
+
+1. Revisar una explicación más detallada del código a utilizar , como en el caso de las fechas o las gráficas.
+
+2. Contrastar errores que se han producido a la hora de crear código manualmente.
+
+3. Proporcionar documentación para poder revisar ejemplos o documentos donde se utilizen ciertos bloques de código con una lógica parecida a ciertos apartados del notebook.
+
+4. Generar código de ejemplo para poder aplicarlo a la hora de tratar la limpieza de datos inconsistentes, fuera de rango o fechas faltantes.
+
