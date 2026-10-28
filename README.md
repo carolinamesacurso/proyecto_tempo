@@ -90,7 +90,7 @@ Tras esto procederemos a limpiar y guardar los datos descargados por csv, ejecut
 | Valores fuera de rango | Al revisar el dataframe para verificar que todas las temperatúras seguían un rango normativo debido a la zona             | Limpiar estos datos sustituyendolos por nulos                |
 | Inconsistencias | Comprobando que máxima es menor que la mínima             | Cambiar a nulos e interpolar                |
 | Fechas faltantes | Comparar la diferencia entre las fechas actuales del dataframe y la lista generada a mano como un rango entre el mínimo y el máximo de las fechas             | Generar una lista con fechas faltantes , añadir las columnas restantes con valores nulos e interpolar los valores nulos              |
-| Valores que no encajan | Mirando el eje y de la gráfica sin limpiar             | Sustituir por nulos e interpolar                |
+| Valores que no encajan | Imprimiendo duplicado de la columna 'Data' e intentando añadir las fechas faltantes             | Eliminar duplicados de la esa columna                |
 
 
 
